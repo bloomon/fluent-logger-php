@@ -308,7 +308,7 @@ class FluentLogger implements LoggerInterface
 
         // could not suppress warning without ini setting.
         // for now, we use error control operators.
-        $socket = @stream_socket_client($this->transport, $errno, $errstr,
+        $socket = stream_socket_client($this->transport, $errno, $errstr,
             $this->getOption("connection_timeout", self::CONNECTION_TIMEOUT),
             $connect_options
         );
@@ -463,7 +463,7 @@ class FluentLogger implements LoggerInterface
     protected function write($buffer)
     {
         // We handle fwrite error on postImpl block. ignore error message here.
-        return @fwrite($this->socket, $buffer);
+        return fwrite($this->socket, $buffer);
     }
 
     /**
